@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <link rel="shortcut icon" href="/home/chuckpirtle/Downloads/calculator-black-variant-with-white-outlines-pngrepo-com.png" type="image/x-icon"/>
+    <style>
+      body{
+        background: linear-gradient(to top right, #66ff33 0%, #66ccff 100%)no-repeat center center fixed;
+        margin: 0;
+        padding: 0;
+      }
+
+      .calc{
+        text-align: center;
+        position: relative;
+        top: 50%;
+        transform: translateY(50%);
+      }
+
+      button{
+        background-color: black;
+        height:50px;
+        width: 80px;
+        font-size: 20px;
+        color: white;
+        border: none;
+        outline: none;
+        margin: -2px;
+      }
+
+      button:hover{
+        background-color: #737373;
+      }
+
+      input{
+        height: 60px;
+        width:240px;
+        font-size: 35px;
+        text-align: right;
+        color: white;
+        background-color: black;
+        outline: none;
+        border: none;
+        padding-right: 10px;
+        border-radius: 10px;
+      }
+
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    </style>
+    <script>
+      var sum="";
+
+      function num(num){
+        document.getElementById("input").value+=num;
+      }
+
+      function clr(){
+        document.getElementById("input").value="";
+      }
+
+      function add(){
+        document.getElementById("input").value+="+";
+      }
+
+      function subtraction(){
+        document.getElementById("input").value+="-";
+      }
+
+      function multiply(){
+        document.getElementById("input").value+="*";
+      }
+
+      function division(){
+        document.getElementById("input").value+="/";
+      }
+
+      function deletePrev(){
+        var str = document.getElementById("input").value;
+        str = str.substring(0, str.length - 1);
+        document.getElementById("input").value= str;
+      }
+
+      function equal(){
+        sum+=document.getElementById("input").value;
+        document.getElementById("input").value=eval(sum);
+        sum="";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="calc">
+      <input id="input" type="float">
+      <br>
+      <br>
+      <button style="border-top-left-radius:10px" onclick="clr()">clear</button>
+      <button onclick="num('(')">(</button>
+      <button onclick="num(')')">)</button>
+      <button style="border-top-right-radius: 10px" onclick="deletePrev()"><</button>
+      <br>
+
+      <button onclick="num(7)">7</button>
+      <button onclick="num(8)">8</button>
+      <button onclick="num(9)">9</button>
+      <button onclick="division()">/</button>
+      <br>
+
+      <button onclick="num(4)">4</button>
+      <button onclick="num(5)">5</button>
+      <button onclick="num(6)">6</button>
+      <button onclick="multiply()">*</button>
+      <br>
+
+      <button onclick="num(1)">1</button>
+      <button onclick="num(2)">2</button>
+      <button onclick="num(3)">3</button>
+      <button onclick="subtraction()">-</button>
+      <br>
+
+      <button style="border-bottom-left-radius: 10px" onclick="num(0)">0</button>
+      <button onclick="num('.')">.</button>
+      <button onclick="equal()">=</button>
+      <button style="border-bottom-right-radius: 10px" onclick="add()">+</button>
+      <br>
+    </div>
+  </body>
+</html>
